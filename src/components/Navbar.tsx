@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -29,7 +28,7 @@ const Navbar = () => {
   return (
     <header className={cn(
       "fixed top-0 w-full z-50 transition-all duration-300",
-      isScrolled ? "bg-white/90 backdrop-blur-sm shadow-md py-2" : "bg-transparent py-4"
+      isScrolled ? "bg-white/90 backdrop-blur-sm shadow-md py-2" : "bg-white/5 backdrop-blur-sm py-6"
     )}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
@@ -47,13 +46,15 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-10">
           <NavLink to="/" label="Startseite" />
           <NavLink to="/speisekarte" label="Speisekarte" />
           <NavLink to="/galerie" label="Galerie" />
           <NavLink to="/ueber-uns" label="Über uns" />
           <NavLink to="/kontakt" label="Kontakt" />
-          <button className="cafe-button">Tisch reservieren</button>
+          <button className="cafe-button bg-cafe-brown text-white hover:bg-cafe-brown-light ml-4">
+            Tisch reservieren
+          </button>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -71,13 +72,15 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+          <div className="container mx-auto px-4 py-6 flex flex-col space-y-4">
             <MobileNavLink to="/" label="Startseite" onClick={() => setMobileMenuOpen(false)} />
             <MobileNavLink to="/speisekarte" label="Speisekarte" onClick={() => setMobileMenuOpen(false)} />
             <MobileNavLink to="/galerie" label="Galerie" onClick={() => setMobileMenuOpen(false)} />
             <MobileNavLink to="/ueber-uns" label="Über uns" onClick={() => setMobileMenuOpen(false)} />
             <MobileNavLink to="/kontakt" label="Kontakt" onClick={() => setMobileMenuOpen(false)} />
-            <button className="cafe-button w-full">Tisch reservieren</button>
+            <button className="cafe-button bg-cafe-brown text-white hover:bg-cafe-brown-light w-full mt-4">
+              Tisch reservieren
+            </button>
           </div>
         </div>
       )}
@@ -117,7 +120,7 @@ const MobileNavLink = ({ to, label, onClick }: MobileNavLinkProps) => {
     <Link 
       to={to} 
       className={cn(
-        "block py-2 px-4 rounded-md transition-colors duration-200",
+        "block py-3 px-4 rounded-md transition-colors duration-200",
         isActive ? "bg-cafe-beige text-cafe-brown" : "text-foreground hover:bg-cafe-beige/50"
       )}
       onClick={onClick}
